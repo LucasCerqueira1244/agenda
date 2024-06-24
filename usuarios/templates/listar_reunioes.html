@@ -1,0 +1,31 @@
+<!-- templates/agenda/listar_reunioes.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Reuniões</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/listar_reunioes.css' %}">
+</head>
+<body>
+    <h1>Lista de Reuniões</h1>
+    {% if reunioes %}
+        {% for reuniao in reunioes %}
+            <div class="reuniao">
+                <h3>{{ reuniao.titulo }}</h3>
+                <p>Data: {{ reuniao.data }}</p>
+                <p>Hora: {{ reuniao.hora_inicio }} - {{ reuniao.hora_fim }}</p>
+                <p>Descrição: {{ reuniao.descricao }}</p>
+                <a href="{% url 'editar_reuniao' reuniao.id %}" class="btn">Editar</a>
+                <a href="{% url 'excluir_reuniao' reuniao.id %}" class="btn">Excluir</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Nenhuma reunião encontrada.</p>
+    {% endif %}
+    <a href="{% url 'adicionar_reuniao' %}" class="btn">Adicionar Reunião</a>
+    <a href="{% url 'logout' %}" class="btn">Sair</a>
+</body>
+</html>

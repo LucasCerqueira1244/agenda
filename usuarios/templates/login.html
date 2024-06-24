@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+</head>
+
+<body>
+    <form action="{% url 'login'%}" method="post">
+        {% csrf_token %}
+
+        <input type="text" placeholder="Login..." name="login"><br>
+        <input type="password" placeholder="Senha..." name="senha"><br>
+        <input type="submit" value="Logar"><br>
+
+    </form>
+
+    <div class="register-prompt">
+        <p>Não possui cadastro?</p>
+        <a href="{% url 'cadastro' %}" class="register-button">Cadastre-se</a>
+    </div>
+    
+</body>
+
+</html>
